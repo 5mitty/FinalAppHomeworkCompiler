@@ -10,6 +10,22 @@ import UIKit
 import CoreData
 
 
+extension ViewController: UITableViewDataSource {
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return classes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = classes[indexPath.row]
+        return cell
+    }
+    
+}
 
 class ViewController: UIViewController {
 
@@ -57,19 +73,4 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource {
-    
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = classes[indexPath.row]
-        return cell
-    }
-    
-}
+
