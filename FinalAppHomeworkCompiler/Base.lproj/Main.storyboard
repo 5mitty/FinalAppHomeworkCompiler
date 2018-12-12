@@ -50,7 +50,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Aku-Zn-UAa">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="TGR-MP-hgl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="TGR-MP-hgl">
                             <connections>
                                 <segue destination="10x-Ms-YhA" kind="show" id="RTS-30-vkj"/>
                             </connections>
@@ -77,12 +77,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-JN-SKv">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-JN-SKv">
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d3d-L8-wBy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sMo-6e-b8z"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Class"/>
+                                            <segment title="+" width="80"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-6z-cce">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="100"/>
+                                        <color key="backgroundColor" red="0.993604274611399" green="0.993604274611399" blue="0.993604274611399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="iwv-mU-6Zt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Add Homework"/>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNA-Hf-70a">
+                                        <rect key="frame" x="0.0" y="150" width="375" height="401"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.18127442930000001" green="0.6050260878" blue="0.92017487050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dbC-JN-SKv" firstAttribute="leading" secondItem="fS0-MS-7he" secondAttribute="leading" id="KOI-1i-Bkh"/>
+                            <constraint firstItem="dbC-JN-SKv" firstAttribute="top" secondItem="fS0-MS-7he" secondAttribute="top" id="am5-xH-ua6"/>
+                            <constraint firstItem="fS0-MS-7he" firstAttribute="bottom" secondItem="dbC-JN-SKv" secondAttribute="bottom" id="nDj-ba-AzW"/>
+                            <constraint firstItem="fS0-MS-7he" firstAttribute="trailing" secondItem="dbC-JN-SKv" secondAttribute="trailing" id="utR-2y-bkN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fS0-MS-7he"/>
                     </view>
                 </viewController>
@@ -133,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJ7-PG-jkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-526" y="421"/>
+            <point key="canvasLocation" x="-258" y="-227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b7W-OH-vbT">
@@ -151,7 +181,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpx-Me-znj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="886"/>
+            <point key="canvasLocation" x="210" y="561"/>
         </scene>
     </scenes>
     <resources>
