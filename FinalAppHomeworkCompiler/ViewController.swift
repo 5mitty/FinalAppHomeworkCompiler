@@ -20,8 +20,9 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let classEntity = classes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = classes[indexPath.row]
+        cell.textLabel?.text = classEntity.value(forKeyPath: "name") as? String
         return cell
     }
     
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
 
     // properties:
     @IBOutlet weak var tableView: UITableView!
-    var classes: [String] = []
+    var classes: [NSManagedObject] = []
     
     
     
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
         title = "The List of Classes"
         tableView.register(UITableView.self, forCellReuseIdentifier: "Cell")
     }
+    
 
     @IBAction func addClass(_ sender: UIBarButtonItem) {
         
@@ -55,9 +57,11 @@ class ViewController: UIViewController {
                 return
             }
             
-            self.classes.append(classToSave)
+            self.save(name: classToSave)
             self.tableView.reloadData()
         }
+        
+        
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
@@ -69,7 +73,30 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    
+    func save(name: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        //1: NSManagedObjectContext
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2: Create new NSManagedObject
+        let entity = NSEntityDescription.entity(forEntityName: "ClassEntity", in: managedContext)!
+        
+        let classEqualsEntity = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //3: KVC, NSManagedObject
+        classEqualsEntity.setValue(name, forKeyPath: "name")
+        
+        //4: save changes to disk by calling save
+        do {
+            try managedContext.save()
+            classes.append(classEqualsEntity)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
 }
 
