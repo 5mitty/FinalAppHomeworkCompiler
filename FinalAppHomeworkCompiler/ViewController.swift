@@ -44,6 +44,27 @@ class ViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1: NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2: NSFetchRequest, Fetches from CoreData
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ClassEntity")
+        
+        //3: hands request over to managed object context
+        do {
+            classes = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
 
     @IBAction func addClass(_ sender: UIBarButtonItem) {
         
