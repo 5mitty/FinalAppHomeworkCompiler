@@ -20,7 +20,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         title = "The List of Classes"
-        tableView.register(UITableView.self, forCellReuseIdentifier: "Cell")
+        tableView.dataSource = self
     }
 
     @IBAction func addClass(_ sender: UIBarButtonItem) {
