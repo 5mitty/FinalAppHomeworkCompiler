@@ -21,7 +21,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let classEntity = classes[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = classEntity.value(forKeyPath: "name") as? String
         return cell
     }
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         title = "The List of Classes"
-        tableView.register(UITableView.self, forCellReuseIdentifier: "Cell")
+        tableView.dataSource = self
     }
     
 
