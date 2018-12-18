@@ -22,15 +22,15 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Yac-qW-pxy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="44" id="Yac-qW-pxy">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yac-qW-pxy" id="yWL-qS-UGQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="4lr-k3-qyK" kind="show" id="3BK-b7-Z5y"/>
+                                            <segue destination="4lr-k3-qyK" kind="show" identifier="GoFromCell" id="3BK-b7-Z5y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,52 +69,51 @@
             </objects>
             <point key="canvasLocation" x="1048.8" y="-169.95073891625617"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="2df-Oj-9Gl">
             <objects>
-                <viewController id="4lr-k3-qyK" sceneMemberID="viewController">
+                <viewController id="4lr-k3-qyK" customClass="SecondViewController" customModule="FinalAppHomeworkCompiler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vbv-25-Zaw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-JN-SKv">
-                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-JN-SKv">
+                                <rect key="frame" x="0.0" y="140" width="375" height="670"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d3d-L8-wBy">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="sMo-6e-b8z"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Class"/>
-                                            <segment title="+" width="80"/>
-                                        </segments>
-                                    </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-6z-cce">
-                                        <rect key="frame" x="0.0" y="84" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                         <color key="backgroundColor" red="0.993604274611399" green="0.993604274611399" blue="0.993604274611399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="iwv-mU-6Zt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <state key="normal" title="Add Homework"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <state key="normal" title="Add Homework/ Refresh"/>
+                                        <connections>
+                                            <action selector="AddHomeworkDetail:" destination="4lr-k3-qyK" eventType="touchUpInside" id="9h4-eI-vNT"/>
+                                        </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNA-Hf-70a">
-                                        <rect key="frame" x="0.0" y="218" width="375" height="454"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="-1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Homework is..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-7n-fJw">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="570"/>
+                                        <color key="backgroundColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dbC-JN-SKv" firstAttribute="bottom" secondItem="fS0-MS-7he" secondAttribute="bottom" constant="34" id="8ty-9C-jAv"/>
+                            <constraint firstItem="dbC-JN-SKv" firstAttribute="bottom" secondItem="fS0-MS-7he" secondAttribute="bottom" constant="32" id="8ty-9C-jAv"/>
                             <constraint firstItem="dbC-JN-SKv" firstAttribute="leading" secondItem="fS0-MS-7he" secondAttribute="leading" id="KOI-1i-Bkh"/>
                             <constraint firstItem="dbC-JN-SKv" firstAttribute="top" secondItem="fS0-MS-7he" secondAttribute="top" id="am5-xH-ua6"/>
                             <constraint firstItem="fS0-MS-7he" firstAttribute="trailing" secondItem="dbC-JN-SKv" secondAttribute="trailing" id="utR-2y-bkN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fS0-MS-7he"/>
                     </view>
+                    <connections>
+                        <outlet property="homeworkDetailLabel" destination="w9o-7n-fJw" id="R2T-Hf-VQL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ll-VN-7NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

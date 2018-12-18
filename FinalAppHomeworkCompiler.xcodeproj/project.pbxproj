@@ -13,6 +13,7 @@
 		56E212C721C02DF800C984CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56E212C621C02DF800C984CB /* Assets.xcassets */; };
 		56E212CA21C02DF800C984CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E212C821C02DF800C984CB /* LaunchScreen.storyboard */; };
 		88AF24A821C0CD4F002D1F5B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88AF24A621C0CD4F002D1F5B /* Model.xcdatamodeld */; };
+		88EF1C6521C87A8D000435FD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EF1C6421C87A8D000435FD /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		56E212C921C02DF800C984CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56E212CB21C02DF800C984CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88AF24A721C0CD4F002D1F5B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		88EF1C6421C87A8D000435FD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				88AF24A621C0CD4F002D1F5B /* Model.xcdatamodeld */,
 				56E212BF21C02DF300C984CB /* AppDelegate.swift */,
 				56E212C121C02DF400C984CB /* ViewController.swift */,
+				88EF1C6421C87A8D000435FD /* SecondViewController.swift */,
 				56E212C321C02DF400C984CB /* Main.storyboard */,
 				56E212C621C02DF800C984CB /* Assets.xcassets */,
 				56E212C821C02DF800C984CB /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88EF1C6521C87A8D000435FD /* SecondViewController.swift in Sources */,
 				56E212C221C02DF400C984CB /* ViewController.swift in Sources */,
 				56E212C021C02DF400C984CB /* AppDelegate.swift in Sources */,
 				88AF24A821C0CD4F002D1F5B /* Model.xcdatamodeld in Sources */,

@@ -22,7 +22,7 @@ extension ViewController: UITableViewDataSource {
         
         let classEntity = classes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        cell.textLabel?.text = classEntity.value(forKeyPath: "name") as? String
+        cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
     
@@ -32,7 +32,9 @@ class ViewController: UIViewController {
 
     // properties:
     @IBOutlet weak var tableView: UITableView!
-    var classes: [NSManagedObject] = []
+    var classes: [String] = []
+    
+    var classDetail: String = ""
     
     
     
@@ -40,36 +42,49 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "The List of Classes"
+        title = "Your List of Classes"
         tableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //1: NSManagedObjectContext
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        //2: NSFetchRequest, Fetches from CoreData
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ClassEntity")
-        
-        //3: hands request over to managed object context
-        do {
-            classes = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        //1: NSManagedObjectContext
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//
+//        //2: NSFetchRequest, Fetches from CoreData
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ClassEntity")
+//
+//        //3: hands request over to managed object context
+//        do {
+//            classes = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//    }
     
 
     @IBAction func addClass(_ sender: UIBarButtonItem) {
         
+        class ClassName {
+            var name: String = ""
+            var homework: String = ""
+            
+            init(name: String, homework: String) {
+                self.name = name
+                self.homework = homework
+            }
+        }
+        
+        let homeworkDetail: String = ""
         
         let alert = UIAlertController(title: "New Class", message: "Add a new Class", preferredStyle: .alert)
+        
+        
         
         let saveAction = UIAlertAction(title: "Save", style: .default) {
             [unowned self] action in
@@ -78,7 +93,11 @@ class ViewController: UIViewController {
                 return
             }
             
-            self.save(name: classToSave)
+            var newClass = ClassName.init(name: classToSave, homework: homeworkDetail)
+            
+            self.classDetail = classToSave
+            
+            self.classes.append(classToSave)
             self.tableView.reloadData()
         }
         
@@ -94,30 +113,40 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func save(name: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
+//    func save(name: String) {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//
+//        //1: NSManagedObjectContext
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//
+//        //2: Create new NSManagedObject
+//        let entity = NSEntityDescription.entity(forEntityName: "ClassEntity", in: managedContext)!
+//
+//        let classEqualsEntity = NSManagedObject(entity: entity, insertInto: managedContext)
+//
+//        //3: KVC, NSManagedObject
+//        classEqualsEntity.setValue(name, forKeyPath: "name")
+//
+//        //4: save changes to disk by calling save
+//        do {
+//            try managedContext.save()
+//            classes.append(classEqualsEntity)
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoFromCell" {
+            let nvc = segue.destination as! SecondViewController
+            nvc.className = classDetail
         }
         
-        //1: NSManagedObjectContext
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        //2: Create new NSManagedObject
-        let entity = NSEntityDescription.entity(forEntityName: "ClassEntity", in: managedContext)!
-        
-        let classEqualsEntity = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        //3: KVC, NSManagedObject
-        classEqualsEntity.setValue(name, forKeyPath: "name")
-        
-        //4: save changes to disk by calling save
-        do {
-            try managedContext.save()
-            classes.append(classEqualsEntity)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
     }
+    
+    
     
 }
 
