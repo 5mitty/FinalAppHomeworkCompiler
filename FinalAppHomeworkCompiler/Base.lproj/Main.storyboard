@@ -29,7 +29,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
+                                            <outletCollection property="gestureRecognizers" destination="45h-Ea-e4Z" appends="YES" id="cWy-mi-oBm"/>
                                             <segue destination="4lr-k3-qyK" kind="show" identifier="GoFromCell" id="3BK-b7-Z5y"/>
                                         </connections>
                                     </tableViewCell>
@@ -66,6 +68,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="45h-Ea-e4Z">
+                    <connections>
+                        <segue destination="4lr-k3-qyK" kind="show" id="cUM-CB-Rml"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1048.8" y="-169.95073891625617"/>
         </scene>
@@ -156,7 +163,8 @@
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="jee-Vt-Sug"/>
                     </view>
                 </viewController>
@@ -186,4 +194,7 @@
     <resources>
         <image name="notebook" width="386" height="386"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3BK-b7-Z5y"/>
+    </inferredMetricsTieBreakers>
 </document>
